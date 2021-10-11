@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: review
+spec:
+  host: review
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: review-route
+spec:
+  hosts:
+    - review
+  http:
+    - route:
+      - destination:
+          host: review

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review
+  labels:
+    app: review
+    version: v1
+spec:
+  selector:
+    matchlabels:
+      app: review
+      version: v1
+  replicas: 1
+  template:
+    matadata:
+      labels:
+        app: review
+        version: v1
+    spec:
+      containers:
+        - name: review
+          image: kashafdocker/newscape-review:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
